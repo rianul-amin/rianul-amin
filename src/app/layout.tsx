@@ -15,15 +15,13 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body>
-        <div className={`h-[calc(100dvh)] p-[30px]`}>
-          <div className="flex">
-            <div className="">
-              <div className="flex gap-[5px]">
-                <NavigationMenu></NavigationMenu>
-                <div className="w-[calc(100vw-310px)] h-[calc(100vh-60px)]">
-                  {children}
-                </div>
-              </div>
+        <div className="h-[calc(100dvh)] p-[30px]">
+          <div className="flex flex-col lg:flex-row gap-[5px]">
+            <div className="w-full lg:w-[250px]">
+              <NavigationMenu />
+            </div>
+            <div className="lg:w-[calc(100vw-310px)] w-[calc(100vw-60px)] lg:h-[calc(100vh-60px)] h-[calc(100vh-160px)]">
+              {children}
             </div>
           </div>
         </div>
