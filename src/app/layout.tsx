@@ -14,7 +14,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body>
-        <div className="h-[calc(100dvh)] p-[30px]">
+        <div className="max-w-[1400px] xl:max-w-[1800px] xxl:max-w-[2200px] mx-auto h-[calc(100dvh)] p-[30px]">
           <div className="flex flex-col lg:flex-row gap-[5px]">
             <div className="w-full lg:w-[250px]">
               <NavigationMenu />
