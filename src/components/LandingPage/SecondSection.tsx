@@ -1,8 +1,5 @@
 'use client'
-import React, { useEffect, useState } from 'react'
-import { AnimatePresence } from 'framer-motion'
-import { motion } from 'framer-motion'
-import { slideRight, slideUp } from '@/styles/animations'
+import React from 'react'
 
 function SecondSection() {
     return (
