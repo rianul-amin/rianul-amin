@@ -2,6 +2,7 @@
 import { useEffect, useRef } from "react";
 import Lenis from "lenis";
 import FirstSection from "@/components/LandingPage/FirstSection";
+import SecondSection from "@/components/LandingPage/SecondSection";
 
 export default function Home() {
   const scrollContainerRef = useRef<HTMLDivElement>(null); 
@@ -33,6 +34,7 @@ export default function Home() {
       className="lg:h-[calc(100vh-60px)] h-[calc(100vh-160px)] w-full overflow-y-auto grid gap-[5px]"
     >
       <FirstSection />
+      <SecondSection />
     </div>
   );
 }

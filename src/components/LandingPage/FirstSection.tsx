@@ -2,27 +2,55 @@
 import React, { useEffect, useState } from 'react'
 import { AnimatePresence } from 'framer-motion'
 import { motion } from 'framer-motion'
-import { slideUp } from '@/styles/animations'
+import { slideRight, slideUp } from '@/styles/animations'
+
+const slideVariants = {
+    down: { y: "0%", transition: { duration: 1 } },
+    up: { y: "-100%", transition: { duration: 1 } } 
+};
+
 
 function FirstSection() {
-    const [isLoading, setIsLoading] = useState(true)
+    const [isBioLoading, setIsBioLoading] = useState(true)
+    const [isTimeLoading, setIsTimeLoading] = useState(true)
+    const colors = ["#FF5733", "#70A738", "#56BCEE", "#2C65F5"];
+    const [activeIndex, setActiveIndex] = useState(0);
+    const [isSlidingDown, setIsSlidingDown] = useState(true);
 
     useEffect(()=>{
         (
             async () => {
                 setTimeout(() => {
-                    setIsLoading(false)
-                }, 2000);
+                    setIsBioLoading(false)
+                }, 500);
+                setTimeout(() => {
+                    setIsTimeLoading(false)
+                }, 300);
             }
         )()
     }, [])
+
+    useEffect(() => {
+        const interval = setInterval(() => {
+            setIsSlidingDown(true); 
+
+            setTimeout(() => {
+                setIsSlidingDown(false); 
+                setTimeout(() => {
+                    setActiveIndex(prev => (prev + 1) % 4); 
+                }, 1000); 
+            }, 2000); 
+        }, 4000);
+
+        return () => clearInterval(interval);
+    }, []);
 
     return (
         <div className="lg:h-[calc(100vh-60px)] h-[calc(100vh-160px)] grid grid-cols-1 md:grid-cols-2 grid-rows-6 md:grid-rows-3 gap-[5px]">
             <div className="bg-[#367BC1] w-full row-span-2 md:row-span-1 relative">
                 <AnimatePresence mode='wait'>
                     {
-                        isLoading && <motion.div variants={slideUp} initial="initial" exit="exit" className="bg-[#000000] w-full h-full absolute cursor-wait"></motion.div>
+                        isBioLoading && <motion.div variants={slideUp} initial="initial" exit="exit" className="bg-[#000000] w-full h-full absolute cursor-wait"></motion.div>
                     }
                 </AnimatePresence> 
                 <div className='py-3 px-5 sm:py-5 sm:px-8'>
@@ -35,16 +63,33 @@ function FirstSection() {
                 </div>
             </div>
 
-            <div className="bg-[#ffffff] w-full flex items-center justify-center col-span-1 md:col-span-1"></div>
+            <div className="bg-[#56BCEE] w-full col-span-1 md:col-span-1 relative">
+                <AnimatePresence mode='wait'>
+                    {
+                        isTimeLoading && <motion.div variants={slideRight} initial="initial" exit="exit" className="bg-[#000000] w-full h-full absolute cursor-wait"></motion.div>
+                    }
+                </AnimatePresence> 
+                <div className='py-3 px-5 sm:py-5 sm:px-8'>
+                    
+                </div>
+            </div>
 
             <div className="row-span-2 grid grid-cols-2 grid-rows-2 gap-[5px]">
                 <div className="bg-[#ffffff] w-full flex items-center justify-center"></div>
 
                 <div className="grid grid-cols-2 grid-rows-2 gap-[5px]">
-                    <div className="bg-[#ffffff] w-full flex items-center justify-center"></div>
-                    <div className="bg-[#ffffff] w-full flex items-center justify-center"></div>
-                    <div className="bg-[#ffffff] w-full flex items-center justify-center"></div>
-                    <div className="bg-[#ffffff] w-full flex items-center justify-center"></div>
+                    {colors.map((color, index) => (
+                        <div key={index} className="relative w-full h-full overflow-hidden" style={{ backgroundColor: color }}>
+                            {activeIndex === index && (
+                                <motion.div
+                                    initial={{ y: "-100%" }}
+                                    animate={isSlidingDown ? "down" : "up"}
+                                    variants={slideVariants}
+                                    className="bg-white w-full h-full absolute"
+                                />
+                            )}
+                        </div>
+                    ))}
                 </div>
 
                 <div className="bg-[#ffffff] w-full flex items-center justify-center"></div>
