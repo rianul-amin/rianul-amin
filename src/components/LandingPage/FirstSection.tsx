@@ -22,10 +22,10 @@ function FirstSection() {
             async () => {
                 setTimeout(() => {
                     setIsBioLoading(false)
-                }, 500);
+                }, 1000);
                 setTimeout(() => {
                     setIsTimeLoading(false)
-                }, 300);
+                }, 800);
             }
         )()
     }, [])
@@ -47,19 +47,41 @@ function FirstSection() {
 
     return (
         <div className="lg:h-[calc(100vh-60px)] h-[calc(100vh-160px)] grid grid-cols-1 md:grid-cols-2 grid-rows-6 md:grid-rows-3 gap-[5px]">
-            <div className="bg-[#367BC1] w-full row-span-2 md:row-span-1 relative">
+            <div className="bg-[#367BC1] w-full h-full row-span-2 md:row-span-1 relative">
                 <AnimatePresence mode='wait'>
                     {
                         isBioLoading && <motion.div variants={slideUp} initial="initial" exit="exit" className="bg-[#000000] w-full h-full absolute cursor-wait"></motion.div>
                     }
                 </AnimatePresence> 
-                <div className='py-3 px-5 sm:py-5 sm:px-8'>
-                    <p className="text-[#ffffff] text-[24px] sm:text-[34px] font-[300]">
-                        Rianul Amin Rian
-                    </p>
-                    <p className="mt-2 text-[#ffffff] text-[12px] sm:text-[14px] font-[400]">
-                        I specialize in full-stack development and blockchain, building scalable apps with NestJS, NextJS, .NET, and Solidity. Currently pursuing my B.Sc. in CSE at AIUB.
-                    </p>
+                <div className='h-full py-3 px-5 sm:py-5 sm:px-8 flex flex-col justify-between'>
+                    <div>
+                        <p className="text-[#ffffff] text-[24px] sm:text-[34px] font-[300]">
+                            Rianul Amin Rian
+                        </p>
+                        <p className="mt-2 text-[#ffffff] text-[12px] sm:text-[14px] font-[400]">
+                            I specialize in full-stack development and blockchain, building scalable apps with NestJS, NextJS, .NET, and Solidity. Currently pursuing my B.Sc. in CSE at AIUB.
+                        </p>
+                    </div>
+                    <div className='mb-2'>
+                        <a 
+                            href="/files/RianulAminResume.pdf" 
+                            target="_blank" 
+                            rel="noopener noreferrer"
+                            className='flex items-center justify-end gap-2'
+                        >
+                            <p className="text-[#ffffff] text-[12px] sm:text-[14px] font-[400]">View My Resume</p>
+                            <svg className='mt-1' width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <g clipPath="url(#clip0_2631_26715)">
+                                <path d="M15.0001 4.1665C15.2212 4.1665 15.4331 4.2543 15.5894 4.41058C15.7457 4.56686 15.8335 4.77882 15.8335 4.99984V11.6665C15.8335 11.8875 15.7457 12.0995 15.5894 12.2558C15.4331 12.412 15.2212 12.4998 15.0001 12.4998C14.7791 12.4998 14.5672 12.412 14.4109 12.2558C14.2546 12.0995 14.1668 11.8875 14.1668 11.6665V7.0115L5.87515 15.3032C5.71798 15.455 5.50748 15.539 5.28898 15.5371C5.07049 15.5352 4.86147 15.4475 4.70697 15.293C4.55246 15.1385 4.46482 14.9295 4.46292 14.711C4.46102 14.4925 4.54502 14.282 4.69682 14.1248L12.9885 5.83317H8.33348C8.11247 5.83317 7.90051 5.74537 7.74423 5.58909C7.58795 5.43281 7.50015 5.22085 7.50015 4.99984C7.50015 4.77882 7.58795 4.56686 7.74423 4.41058C7.90051 4.2543 8.11247 4.1665 8.33348 4.1665H15.0001Z" fill="white"/>
+                                </g>
+                                <defs>
+                                <clipPath id="clip0_2631_26715">
+                                <rect width="20" height="20" fill="white"/>
+                                </clipPath>
+                                </defs>
+                            </svg>
+                        </a>
+                    </div>
                 </div>
             </div>
 
