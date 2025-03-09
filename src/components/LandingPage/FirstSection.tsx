@@ -19,17 +19,17 @@ function FirstSection() {
 
     return (
         <div className="lg:h-[calc(100vh-60px)] h-[calc(100vh-160px)] grid grid-cols-1 md:grid-cols-2 grid-rows-6 md:grid-rows-3 gap-[5px]">
-            <div className="bg-[#ffffff] w-full row-span-2 md:row-span-1 relative">
+            <div className="bg-[#367BC1] w-full row-span-2 md:row-span-1 relative">
                 <AnimatePresence mode='wait'>
                     {
                         isLoading && <motion.div variants={slideUp} initial="initial" exit="exit" className="bg-[#000000] w-full h-full absolute cursor-wait"></motion.div>
                     }
                 </AnimatePresence> 
                 <div className='py-3 px-5 sm:py-5 sm:px-8'>
-                    <p className="text-[#000000] text-[24px] sm:text-[34px] font-[300]">
+                    <p className="text-[#ffffff] text-[24px] sm:text-[34px] font-[300]">
                         Rianul Amin Rian
                     </p>
-                    <p className="mt-2 text-[#000000] text-[12px] sm:text-[14px] font-[400]">
+                    <p className="mt-2 text-[#ffffff] text-[12px] sm:text-[14px] font-[400]">
                         I specialize in full-stack development and blockchain, building scalable apps with NestJS, NextJS, .NET, and Solidity. Currently pursuing my B.Sc. in CSE at AIUB.
                     </p>
                 </div>
