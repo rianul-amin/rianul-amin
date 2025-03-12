@@ -4,17 +4,11 @@ import { AnimatePresence } from 'framer-motion'
 import { motion } from 'framer-motion'
 import { slideRight, slideUp } from '@/styles/animations'
 
-const slideVariants = {
-    down: { y: "0%", transition: { duration: 1 } },
-    up: { y: "-100%", transition: { duration: 1 } } 
-};
-
-
 function FirstSection() {
     const [isBioLoading, setIsBioLoading] = useState(true)
     const [isTimeLoading, setIsTimeLoading] = useState(true)
     const colors = ["#FF5733", "#70A738", "#56BCEE", "#2C65F5"];
-    const [hoveredIndex, setHoveredIndex] = useState(null);
+    const [hoveredIndex, setHoveredIndex] = useState<number | null>(null);
 
     useEffect(()=>{
         (
@@ -84,7 +78,7 @@ function FirstSection() {
                 <div className="bg-[#ffffff] w-full flex items-center justify-center"></div>
 
                 <div className="grid grid-cols-2 grid-rows-2 gap-[5px]">
-                    {colors.map((color, index: any) => (
+                    {colors.map((color, index: number) => (
                         <div
                             key={index}
                             className="relative w-full h-full overflow-hidden"
